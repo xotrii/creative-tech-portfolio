@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Accessibility and visual QA assistant for designers and frontend teams." />
+  <meta name="theme-color" content="#020504" />
+  <title>DesignGuard AI</title>
+  <link rel="stylesheet" href="../../src/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to audit workspace</a>
+  <div class="ambient-grid" aria-hidden="true"></div>
+  <header class="app-header shell">
+    <a class="back-link" href="../../">← Recruiter Lab</a>
+    <span class="status-pill">05 // ACCESSIBILITY QA</span>
+  </header>
+  <main class="shell">
+    <section class="app-hero">
+      <p class="eyebrow">WCAG CONTRAST · LOCAL PALETTES · SAFE HTML</p>
+      <h1>DesignGuard AI</h1>
+      <p>An accessibility workbench with exact contrast math, local image sampling, guided alt-text drafting, and sanitized axe-core checks. Results guide review; they are not a conformance certification.</p>
+    </section>
+
+    <section id="workspace" class="panel">
+      <div class="tabs" role="tablist" aria-label="DesignGuard tools">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="contrast-panel" id="contrast-tab">Contrast</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="image-panel" id="image-tab">Image palette</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="alt-panel" id="alt-tab">Alt text</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="audit-panel" id="audit-tab">UI audit</button>
+      </div>
+
+      <div id="contrast-panel" class="tab-panel" role="tabpanel" aria-labelledby="contrast-tab">
+        <div class="app-grid">
+          <div class="span-6 controls">
+            <div class="control"><label for="foreground">Foreground</label><input id="foreground" type="color" value="#39ff14" /></div>
+            <div class="control"><label for="background">Background</label><input id="background" type="color" value="#020504" /></div>
+            <div class="button-row"><button class="button" id="swap-colors" type="button">Swap colors</button><button class="button ghost" id="copy-link" type="button">Copy share link</button></div>
+          </div>
+          <div class="span-6">
+            <div class="metric"><span>Contrast ratio</span><strong id="ratio">—</strong></div>
+            <p id="contrast-results" class="panel-copy"></p>
+            <div id="contrast-preview" class="panel" style="margin-top:1rem">Accessible design should remain readable in context.</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="image-panel" class="tab-panel" role="tabpanel" aria-labelledby="image-tab" hidden>
+        <div class="control"><label for="image-file">Select PNG, JPEG, WebP, or GIF up to 8 MB</label><input id="image-file" type="file" accept="image/png,image/jpeg,image/webp,image/gif" /></div>
+        <canvas id="image-canvas" class="wave-canvas" aria-label="Local image preview"></canvas>
+        <div id="palette" class="swatches"></div>
+        <p class="notice">The selected image is decoded and sampled locally. It is not uploaded or saved.</p>
+      </div>
+
+      <div id="alt-panel" class="tab-panel" role="tabpanel" aria-labelledby="alt-tab" hidden>
+        <div class="app-grid">
+          <div class="span-6 controls">
+            <div class="control"><label for="subject">Main subject</label><input id="subject" placeholder="Green operations dashboard" /></div>
+            <div class="control"><label for="context">Useful context</label><input id="context" placeholder="showing staffing coverage by zone" /></div>
+            <div class="control"><label for="visible-text">Visible text</label><input id="visible-text" placeholder="ShiftLens AI" /></div>
+            <div class="control"><label for="purpose">Purpose</label><input id="purpose" placeholder="Introduces an analytics case study" /></div>
+            <label><input id="decorative" type="checkbox" style="width:auto" /> Image is decorative</label>
+            <button class="button primary" id="draft-alt" type="button">Create structured draft</button>
+          </div>
+          <div class="span-6">
+            <div class="control"><label for="alt-output">Editable draft</label><textarea id="alt-output"></textarea></div>
+            <button class="button" id="copy-alt" type="button">Copy draft</button>
+            <p class="notice">This is a rule-based writing aid, not computer vision. Confirm the final wording in page context.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="audit-panel" class="tab-panel" role="tabpanel" aria-labelledby="audit-tab" hidden>
+        <div class="control"><label for="html-snippet">Paste a small HTML snippet</label><textarea id="html-snippet"><button style="color:#777;background:#888">Continue</button>
+<img src="demo.png"></textarea></div>
+        <button class="button primary" id="run-audit" type="button">Run sanitized audit</button>
+        <div id="audit-preview" class="panel" style="margin-top:1rem"></div>
+        <div id="audit-results" class="panel-copy"></div>
+      </div>
+
+      <div class="button-row">
+        <button class="button" id="export-report" type="button">Export JSON report</button>
+      </div>
+      <p id="guard-status" class="live-status" role="status" aria-live="polite">Contrast Lab ready.</p>
+    </section>
+
+    <section class="section">
+      <details>
+        <summary>Scope, threat model, and limitations</summary>
+        <p>Uploaded images never leave the browser. HTML is sanitized before entering the preview, and scripts are removed. Automated checks cannot determine intent, writing quality, usability, or full WCAG conformance; manual keyboard, screen-reader, zoom, and content review remain necessary.</p>
+      </details>
+    </section>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

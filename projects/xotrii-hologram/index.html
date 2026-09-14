@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive audio-reactive XOTRII hologram built with Three.js." />
+  <meta name="theme-color" content="#020504" />
+  <title>XOTRII Hologram Lab</title>
+  <link rel="stylesheet" href="../../src/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#experience">Skip to experience</a>
+  <div class="ambient-grid" aria-hidden="true"></div>
+  <header class="app-header shell">
+    <a class="back-link" href="../../">← Recruiter Lab</a>
+    <span class="status-pill">01 // INTERACTIVE 3D</span>
+  </header>
+  <main class="shell">
+    <section class="app-hero">
+      <p class="eyebrow">THREE.JS · WEB AUDIO · ACCESSIBLE MOTION</p>
+      <h1>XOTRII<br />Hologram Lab</h1>
+      <p>A procedural brand experiment with pointer depth, controlled signal distortion, local microphone reactivity, and calm fallbacks.</p>
+    </section>
+
+    <section id="experience" class="app-grid">
+      <div class="panel span-8">
+        <div id="hologram-frame" class="canvas-frame" aria-label="Interactive XOTRII hologram">
+          <div class="scan-beam" id="scan-beam" aria-hidden="true"></div>
+          <p id="fallback" class="mini-hologram" hidden>XOTRII</p>
+        </div>
+        <p id="scene-status" class="live-status" role="status" aria-live="polite">Initializing local renderer…</p>
+      </div>
+
+      <aside class="panel span-4">
+        <h2>Signal controls</h2>
+        <p class="panel-copy">Tune the visual system. Reset always returns to a stable recruiter-demo state.</p>
+        <div class="controls">
+          <div class="control"><label for="spin">Rotation</label><input id="spin" type="range" min="0" max="100" value="34" /></div>
+          <div class="control"><label for="glitch">Glitch intensity</label><input id="glitch" type="range" min="0" max="100" value="18" /></div>
+          <div class="control"><label for="glow">Glow</label><input id="glow" type="range" min="0" max="100" value="72" /></div>
+          <div class="control"><label for="scan">Scan speed</label><input id="scan" type="range" min="1" max="10" value="4" /></div>
+          <div class="control">
+            <label for="quality">Quality</label>
+            <select id="quality"><option value="1">Low</option><option value="1.5" selected>Medium</option><option value="2">High</option></select>
+          </div>
+        </div>
+        <div class="button-row">
+          <button class="button primary" id="audio-toggle" type="button">Enable mic pulse</button>
+          <button class="button ghost" id="fullscreen" type="button">Fullscreen</button>
+          <button class="button ghost" id="reset" type="button">Reset</button>
+        </div>
+        <p class="notice">Microphone access starts only after your click. Levels are analyzed locally; audio is never recorded or uploaded.</p>
+      </aside>
+
+      <div class="panel span-12">
+        <details>
+          <summary>Engineering notes</summary>
+          <p>The wordmark is generated as a canvas texture and layered in Three.js for holographic depth. Device pixel ratio is clamped by the quality setting, animation pauses with the tab, microphone data is reduced to an RMS level, and reduced-motion preferences disable drift and signal glitches.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Local-first browser audio analysis workstation." />
+  <meta name="theme-color" content="#020504" />
+  <title>SonicScope AI</title>
+  <link rel="stylesheet" href="../../src/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#studio">Skip to audio studio</a>
+  <div class="ambient-grid" aria-hidden="true"></div>
+  <header class="app-header shell">
+    <a class="back-link" href="../../">← Recruiter Lab</a>
+    <span class="status-pill">04 // LOCAL AUDIO</span>
+  </header>
+  <main class="shell">
+    <section class="app-hero">
+      <p class="eyebrow">WEB AUDIO · SIGNAL VISUALIZATION · PRIVACY</p>
+      <h1>SonicScope AI</h1>
+      <p>Analyze dynamics and spectral character without uploading a file. Estimates are labeled, thresholds are explainable, and a generated demo signal is built in.</p>
+    </section>
+
+    <section id="studio" class="app-grid">
+      <div class="panel span-12">
+        <div class="controls" style="grid-template-columns: repeat(auto-fit,minmax(210px,1fr))">
+          <div class="control"><label for="audio-file">Choose browser-decodable audio, up to 30 MB</label><input id="audio-file" type="file" accept="audio/*" /></div>
+          <div class="button-row">
+            <button class="button primary" id="demo" type="button">Generate demo tone</button>
+            <button class="button" id="export" type="button" disabled>Export JSON</button>
+            <button class="button danger" id="reset" type="button">Remove audio</button>
+          </div>
+        </div>
+        <audio id="player" controls></audio>
+        <p id="audio-status" class="live-status" role="status" aria-live="polite">No audio loaded. Files stay on this device.</p>
+      </div>
+
+      <div class="panel span-12">
+        <div class="metric-grid">
+          <div class="metric"><span>Peak</span><strong id="peak">—</strong></div>
+          <div class="metric"><span>RMS</span><strong id="rms">—</strong></div>
+          <div class="metric"><span>Crest factor</span><strong id="crest">—</strong></div>
+          <div class="metric"><span>Zero crossings</span><strong id="zcr">—</strong></div>
+          <div class="metric"><span>BPM estimate</span><strong id="bpm">—</strong></div>
+          <div class="metric"><span>Key estimate</span><strong id="key">—</strong></div>
+          <div class="metric"><span>Sample rate</span><strong id="sample-rate">—</strong></div>
+          <div class="metric"><span>Channels</span><strong id="channels">—</strong></div>
+        </div>
+      </div>
+
+      <div class="panel span-6">
+        <h2>Waveform</h2>
+        <canvas id="waveform" class="wave-canvas" aria-label="Audio waveform"></canvas>
+      </div>
+      <div class="panel span-6">
+        <h2>Frequency profile</h2>
+        <canvas id="spectrum" class="wave-canvas" aria-label="Approximate frequency spectrum"></canvas>
+      </div>
+
+      <div class="panel span-12">
+        <h2>Explainable tags</h2>
+        <p id="tags" class="panel-copy">Load audio to generate descriptive thresholds.</p>
+        <details>
+          <summary>Algorithms and limitations</summary>
+          <p>Peak, RMS, crest factor, and zero-crossing rate are deterministic measurements. BPM is estimated from short-time energy peaks. Key uses autocorrelation to identify a dominant periodic pitch and is not reliable for dense or percussive mixes. Visual frequency bins use a small DFT window for an educational overview, not mastering-grade analysis.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

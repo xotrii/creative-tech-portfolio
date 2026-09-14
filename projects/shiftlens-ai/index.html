@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Synthetic airport operations analytics and staffing scenario dashboard." />
+  <meta name="theme-color" content="#020504" />
+  <title>ShiftLens AI</title>
+  <link rel="stylesheet" href="../../src/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#dashboard">Skip to dashboard</a>
+  <div class="ambient-grid" aria-hidden="true"></div>
+  <header class="app-header shell">
+    <a class="back-link" href="../../">← Recruiter Lab</a>
+    <span class="status-pill">03 // SYNTHETIC OPERATIONS</span>
+  </header>
+  <main class="shell">
+    <section class="app-hero">
+      <p class="eyebrow">DATA STORYTELLING · TRANSPARENT FORECASTING</p>
+      <h1>ShiftLens AI</h1>
+      <p>A decision-support dashboard inspired by facilities leadership. Every record is generated locally from a fixed seed—no airport, airline, employee, or passenger data is used.</p>
+    </section>
+
+    <section id="dashboard" class="app-grid">
+      <div class="panel span-12">
+        <div class="controls" style="grid-template-columns: repeat(auto-fit,minmax(190px,1fr))">
+          <div class="control"><label for="zone">Zone</label><select id="zone"><option value="All">All zones</option></select></div>
+          <div class="control"><label for="staff-delta">Staffing scenario: <output id="delta-output">+0</output></label><input id="staff-delta" type="range" min="-4" max="6" value="0" /></div>
+          <div class="button-row">
+            <button class="button" id="export" type="button">Export synthetic CSV</button>
+            <button class="button ghost" id="reset" type="button">Reset scenario</button>
+          </div>
+        </div>
+        <p id="dashboard-status" class="live-status" role="status" aria-live="polite">Synthetic model ready.</p>
+      </div>
+
+      <div class="panel span-12">
+        <div class="metric-grid">
+          <div class="metric"><span>Average workload</span><strong id="kpi-workload">—</strong></div>
+          <div class="metric"><span>Coverage</span><strong id="kpi-coverage">—</strong></div>
+          <div class="metric"><span>Inspection score</span><strong id="kpi-inspection">—</strong></div>
+          <div class="metric"><span>Projected risk</span><strong id="kpi-risk">—</strong></div>
+        </div>
+      </div>
+
+      <div class="panel span-8">
+        <h2>Workload and transparent forecast</h2>
+        <p class="panel-copy">Six-period moving average; displayed as a heuristic rather than a trained ML model.</p>
+        <canvas id="trend-chart" class="chart-canvas" aria-label="Workload, coverage, and moving-average chart"></canvas>
+      </div>
+
+      <aside class="panel span-4">
+        <h2>Scenario impact</h2>
+        <div class="metric"><span>Current coverage</span><strong id="scenario-current">—</strong></div>
+        <div class="metric"><span>Projected coverage</span><strong id="scenario-projected">—</strong></div>
+        <div class="metric"><span>Labor-hour change</span><strong id="scenario-hours">—</strong></div>
+        <div class="metric"><span>Service impact</span><strong id="scenario-impact">—</strong></div>
+      </aside>
+
+      <div class="panel span-12">
+        <h2>Latest operational signals</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Period</th><th>Zone</th><th>Workload</th><th>Staff</th><th>Coverage</th><th>Backlog</th><th>Inspection</th><th>Flag</th></tr></thead>
+            <tbody id="signal-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel span-12">
+        <details>
+          <summary>Data dictionary and model limits</summary>
+          <p><strong>Workload</strong> is a 0–120 synthetic demand index. <strong>Coverage</strong> compares estimated capacity with workload. <strong>Backlog</strong> is a generated task count. <strong>Inspection</strong> is a simulated quality score. A flag appears when coverage is below 80%, backlog exceeds 5, or an incident is present. Forecasts are moving averages and should not drive real staffing decisions.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
