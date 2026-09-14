@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Privacy-conscious English and Japanese browser voice assistant prototype." />
+  <meta name="theme-color" content="#020504" />
+  <title>VoiceBridge AI</title>
+  <link rel="stylesheet" href="../../src/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#console">Skip to voice console</a>
+  <div class="ambient-grid" aria-hidden="true"></div>
+  <header class="app-header shell">
+    <a class="back-link" href="../../">← Recruiter Lab</a>
+    <span class="status-pill">02 // SPEECH PROTOTYPE</span>
+  </header>
+  <main class="shell">
+    <section class="app-hero">
+      <p class="eyebrow">ENGLISH ↔ JAPANESE · LOCAL DEMO PROVIDER</p>
+      <h1>VoiceBridge AI</h1>
+      <p>A browser prototype for respectful bilingual conversations. Speech recognition and playback use browser APIs; translation is an honest, deterministic phrase-and-glossary demo.</p>
+    </section>
+
+    <p class="notice">Prototype scope: this does not connect to phone carriers. Microphone access starts only when you press Listen, and audio is not stored.</p>
+
+    <section id="console" class="app-grid">
+      <div class="panel span-6">
+        <div class="control">
+          <label for="source-language">Input language</label>
+          <select id="source-language"><option value="en-US">English</option><option value="ja-JP">Japanese</option></select>
+        </div>
+        <div class="control">
+          <label for="source-text">Transcript or typed message</label>
+          <textarea id="source-text" maxlength="500" placeholder="Try: Where is the train station?"></textarea>
+        </div>
+        <div class="button-row">
+          <button class="button primary" id="listen" type="button">Listen</button>
+          <button class="button" id="translate" type="button">Translate</button>
+          <button class="button ghost" id="swap" type="button">Swap languages</button>
+        </div>
+      </div>
+
+      <div class="panel span-6">
+        <p class="label">Translated output</p>
+        <div id="output" class="metric" style="min-height: 150px" tabindex="0">Your translated phrase will appear here.</div>
+        <div class="button-row">
+          <button class="button primary" id="speak" type="button" disabled>Speak output</button>
+          <button class="button" id="copy" type="button" disabled>Copy</button>
+          <button class="button ghost" id="clear" type="button">Clear</button>
+        </div>
+        <p id="voice-status" class="live-status" role="status" aria-live="polite">Ready.</p>
+      </div>
+
+      <div class="panel span-7">
+        <h2>Phrase library</h2>
+        <p class="panel-copy">Choose a supported local phrase so the full state flow can be reviewed without a paid API.</p>
+        <div class="button-row" id="phrases">
+          <button class="button ghost" data-phrase="Good morning">Good morning</button>
+          <button class="button ghost" data-phrase="Thank you">Thank you</button>
+          <button class="button ghost" data-phrase="Where is the train station?">Find the station</button>
+          <button class="button ghost" data-phrase="Please speak slowly">Speak slowly</button>
+          <button class="button ghost" data-phrase="I need help">I need help</button>
+        </div>
+      </div>
+
+      <aside class="panel span-5">
+        <h2>Local glossary</h2>
+        <div class="control"><label for="glossary-source">Source term</label><input id="glossary-source" maxlength="60" placeholder="terminal" /></div>
+        <div class="control"><label for="glossary-target">Target term</label><input id="glossary-target" maxlength="60" placeholder="ターミナル" /></div>
+        <div class="button-row">
+          <button class="button" id="add-glossary" type="button">Add pair</button>
+          <button class="button danger" id="clear-data" type="button">Clear local data</button>
+        </div>
+        <ul id="glossary-list"></ul>
+      </aside>
+
+      <div class="panel span-12">
+        <details>
+          <summary>Architecture, privacy, and limitations</summary>
+          <p>The interface separates speech recognition, translation, and speech synthesis into distinct states. The included provider supports selected phrases and user-defined glossary substitutions only. Unknown language is not presented as a real AI translation. A production version would connect a reviewed translation provider through a server-side adapter, then add authentication, consent, logging controls, latency monitoring, and telephony infrastructure.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

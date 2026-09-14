@@ -1,42 +1,58 @@
-# XOTRII Creative Tech Portfolio
+# XOTRII Recruiter Lab
 
-A polished one-page portfolio that presents XOTRII as a creative technologist working across applied AI, data, front-end development, and UI design.
+Five focused, browser-based product demos that turn creative technology, responsible AI, accessibility, audio, and operations data into tangible work.
 
-**Live demo:** [xotrii.github.io/creative-tech-portfolio](https://xotrii.github.io/creative-tech-portfolio/)
+[Open the live project hub](https://xotrii.github.io/creative-tech-portfolio/)
 
-## Purpose
+## Projects
 
-This site gives employers a fast, clear view of the projects, technical direction, and design thinking behind XOTRII. Its hacker-green identity remains distinctive while the information architecture stays professional and readable.
+| Project | What it demonstrates | Live demo |
+| --- | --- | --- |
+| XOTRII Hologram Lab | Three.js rendering, pointer interaction, graceful WebGL fallback, reduced-motion support | [Launch](https://xotrii.github.io/creative-tech-portfolio/projects/xotrii-hologram/) |
+| VoiceBridge AI | Browser speech APIs, local-first phrase translation, glossary persistence, explicit privacy boundaries | [Launch](https://xotrii.github.io/creative-tech-portfolio/projects/voicebridge-ai/) |
+| ShiftLens AI | Deterministic synthetic operations data, moving-average forecasts, staffing scenarios, CSV export | [Launch](https://xotrii.github.io/creative-tech-portfolio/projects/shiftlens-ai/) |
+| SonicScope AI | Web Audio analysis, waveform and spectrum rendering, interpretable audio descriptors, JSON export | [Launch](https://xotrii.github.io/creative-tech-portfolio/projects/sonicscope-ai/) |
+| DesignGuard AI | WCAG contrast checks, local palette extraction, alt-text drafting, sanitized HTML audits | [Launch](https://xotrii.github.io/creative-tech-portfolio/projects/designguard-ai/) |
 
-## Features
+## Why this repository exists
 
-- Responsive landing page
-- Hacker-green cyber interface styling
-- Recruiter-friendly project cards
-- Skills and services section
-- Professional contact links
-- Smooth scroll navigation
-- Lightweight vanilla HTML, CSS, and JavaScript
+Each project is intentionally small enough to inspect in an interview and complete enough to use. The suite emphasizes product judgment: useful defaults, transparent limitations, local processing where practical, accessible interaction, deterministic demos, and clear exports.
 
-## Tech Stack
+## Stack
 
-- HTML5
-- CSS3
-- JavaScript
-- Responsive web design
-- CSS animations
+- Vite multi-page build with plain JavaScript modules
+- Three.js, Chart.js, Meyda, axe-core, DOMPurify, Culori, and Zod
+- Vitest unit coverage and ESLint quality checks
+- GitHub Actions continuous integration and GitHub Pages deployment
 
-## Employer Value
+## Run locally
 
-This project demonstrates front-end layout skills, visual hierarchy, brand consistency, interaction design, and professional project documentation.
+~~~bash
+npm install
+npm run dev
+~~~
 
-## How to Run
+Before submitting a change:
 
-Open `index.html` in a browser. The public version is deployed with GitHub Pages.
+~~~bash
+npm run lint
+npm test
+npm run build
+~~~
 
-## Future Improvements
+## Architecture
 
-- Add live project screenshots
-- Add resume download button
-- Connect a contact form backend
-- Add case study pages for each project
+The root page is a portfolio hub. Each folder under `projects/` is an independent entry point, while `src/lib/core.js` contains the deterministic logic shared with the test suite. Vite emits every route into `dist/` for static hosting.
+
+## Responsible-demo boundaries
+
+- ShiftLens uses synthetic records and is not a workforce decision system.
+- VoiceBridge uses a deliberately small local phrase map and makes no universal translation claim.
+- SonicScope descriptions are heuristic and should not be treated as authorship or copyright judgments.
+- DesignGuard assists review; it does not replace testing with disabled people or expert accessibility audits.
+
+## Author
+
+Built by [Tristan Williams (@xotrii)](https://github.com/xotrii).
+
+Licensed under the MIT License.

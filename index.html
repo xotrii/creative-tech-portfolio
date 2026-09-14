@@ -1,107 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="XOTRII portfolio site for front-end development, UI/UX design, and creative technology projects.">
-    <title>XOTRII | Creative Technologist</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Five interactive AI, data, audio, and accessibility projects by Tristan Williams." />
+  <meta name="theme-color" content="#020504" />
+  <title>XOTRII Recruiter Lab</title>
+  <link rel="stylesheet" href="./src/styles.css" />
 </head>
 <body>
-    <div class="scanline"></div>
+  <a class="skip-link" href="#projects">Skip to projects</a>
+  <div class="ambient-grid" aria-hidden="true"></div>
+  <header class="site-header shell">
+    <a class="brand" href="./" aria-label="XOTRII Recruiter Lab home">
+      <span class="brand-mark">X</span>
+      <span>XOTRII // LAB</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#projects">Projects</a>
+      <a href="#principles">Principles</a>
+      <a href="https://github.com/xotrii">GitHub</a>
+    </nav>
+  </header>
 
-    <header class="site-header">
-        <a class="logo" href="#home">XOTRII<span>.LAB</span></a>
-        <nav class="nav-links" aria-label="Primary navigation">
-            <a href="#work">Work</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+  <main>
+    <section class="hero shell">
+      <p class="eyebrow">CREATIVE TECHNOLOGIST · ATLANTA</p>
+      <h1>Five systems.<br /><span>One visual language.</span></h1>
+      <p class="hero-copy">
+        Practical browser prototypes across voice interfaces, operations analytics,
+        audio engineering, accessibility, and interactive 3D design.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="#projects">Explore builds</a>
+        <a class="button ghost" href="https://github.com/xotrii/creative-tech-portfolio">View source</a>
+      </div>
+      <div class="signal-line" aria-hidden="true"><span></span></div>
+    </section>
 
-    <main>
-        <section id="home" class="hero section-shell">
-            <div class="hero-copy">
-                <p class="eyebrow">creative technologist / applied ai / data / front-end</p>
-                <h1>Building digital experiences with code, motion, and sharp visual identity.</h1>
-                <p class="hero-text">
-                    I combine applied AI, data thinking, front-end development, and visual design to create useful digital experiences with a distinct identity.
-                </p>
-                <div class="hero-actions">
-                    <a class="button primary" href="#work">View Projects</a>
-                    <a class="button secondary" href="https://github.com/xotrii">Explore GitHub</a>
-                </div>
-            </div>
-            <aside class="terminal-card" aria-label="XOTRII system status">
-                <div class="terminal-top">
-                    <span></span><span></span><span></span>
-                </div>
-                <pre id="terminalOutput"></pre>
-            </aside>
-        </section>
+    <section id="projects" class="section shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SELECTED WORK // 01—05</p>
+          <h2>Recruiter-ready builds</h2>
+        </div>
+        <p>Every demo works without paid keys and states its limitations clearly.</p>
+      </div>
 
-        <section id="work" class="section-shell">
-            <div class="section-heading">
-                <p class="eyebrow">selected work</p>
-                <h2>Projects built around code, design, and creative systems.</h2>
-            </div>
+      <div class="project-grid">
+        <a class="project-card hero-card" href="./projects/xotrii-hologram/">
+          <span class="project-index">01</span>
+          <div class="mini-hologram" aria-hidden="true">XOTRII</div>
+          <p class="tag">THREE.JS · WEB AUDIO</p>
+          <h3>XOTRII Hologram Lab</h3>
+          <p>An interactive, audio-reactive holographic identity with privacy and reduced-motion fallbacks.</p>
+          <span class="card-cta">Launch system →</span>
+        </a>
 
-            <div class="project-grid">
-                <article class="project-card">
-                    <p class="project-index">001</p>
-                    <h3>XOTRII Card Battle UI</h3>
-                    <p>A playable card-battle prototype with dynamic rendering, scoring logic, and game-inspired motion.</p>
-                    <span>JavaScript · CSS Motion · Game UI</span>
-                    <a class="project-link" href="https://github.com/xotrii/xotrii-card-battle-ui">View repository ↗</a>
-                </article>
-                <article class="project-card">
-                    <p class="project-index">002</p>
-                    <h3>Remote Internship Tracker</h3>
-                    <p>A practical application dashboard with filtering, validation, and browser-based data storage.</p>
-                    <span>JavaScript · localStorage · Dashboard UX</span>
-                    <a class="project-link" href="https://github.com/xotrii/remote-internship-tracker">View repository ↗</a>
-                </article>
-                <article class="project-card">
-                    <p class="project-index">003</p>
-                    <h3>XOTRII Profile System</h3>
-                    <p>A recruiter-focused GitHub identity that connects working projects, verified learning, and creative direction.</p>
-                    <span>Documentation · Brand System · Career UX</span>
-                    <a class="project-link" href="https://github.com/xotrii/xotrii">View profile source ↗</a>
-                </article>
-            </div>
-        </section>
+        <a class="project-card" href="./projects/voicebridge-ai/">
+          <span class="project-index">02</span>
+          <p class="tag">SPEECH UX · LOCAL DEMO</p>
+          <h3>VoiceBridge AI</h3>
+          <p>An English ↔ Japanese voice-assistant prototype with explicit permission and honest fallback states.</p>
+          <span class="card-cta">Open prototype →</span>
+        </a>
 
-        <section id="skills" class="section-shell skills-layout">
-            <div>
-                <p class="eyebrow">technical direction</p>
-                <h2>Clean builds with a strong creative edge.</h2>
-                <p>
-                    My work combines interdisciplinary study, programming foundations, and visual design. I focus on responsive behavior, readable code, practical use cases, and documentation that makes each project easy to evaluate.
-                </p>
-            </div>
-            <div class="skills-list">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>Java</span>
-                <span>Python</span>
-                <span>UI/UX</span>
-                <span>Brand Systems</span>
-                <span>GitHub</span>
-            </div>
-        </section>
+        <a class="project-card" href="./projects/shiftlens-ai/">
+          <span class="project-index">03</span>
+          <p class="tag">DATA · FORECASTING</p>
+          <h3>ShiftLens AI</h3>
+          <p>A synthetic airport-operations dashboard with transparent forecasts and staffing scenarios.</p>
+          <span class="card-cta">Inspect dashboard →</span>
+        </a>
 
-        <section id="contact" class="section-shell contact-panel">
-            <p class="eyebrow">open to opportunities</p>
-            <h2>Available for remote internships and entry-level AI, data, front-end, and creative-technology roles.</h2>
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/xotrii">LinkedIn</a>
-                <a href="mailto:xotriimgmt@gmail.com">Email</a>
-                <a href="https://github.com/xotrii">GitHub</a>
-            </div>
-        </section>
-    </main>
+        <a class="project-card" href="./projects/sonicscope-ai/">
+          <span class="project-index">04</span>
+          <p class="tag">WEB AUDIO · SIGNALS</p>
+          <h3>SonicScope AI</h3>
+          <p>A local-first audio workstation for waveform, spectral, dynamics, and explainable tag analysis.</p>
+          <span class="card-cta">Analyze audio →</span>
+        </a>
 
-    <script src="script.js"></script>
+        <a class="project-card" href="./projects/designguard-ai/">
+          <span class="project-index">05</span>
+          <p class="tag">WCAG · VISUAL QA</p>
+          <h3>DesignGuard AI</h3>
+          <p>Contrast math, local palette inspection, structured alt-text drafting, and sanitized UI audits.</p>
+          <span class="card-cta">Audit a design →</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="principles" class="section shell principles">
+      <div>
+        <p class="eyebrow">BUILD PRINCIPLES</p>
+        <h2>Designed to be questioned.</h2>
+      </div>
+      <div class="principle-grid">
+        <article><strong>01</strong><h3>Honest AI</h3><p>Heuristics and demos are labeled. No inflated accuracy or fake production claims.</p></article>
+        <article><strong>02</strong><h3>Local first</h3><p>Audio and images stay in the browser unless a user explicitly chooses otherwise.</p></article>
+        <article><strong>03</strong><h3>Accessible motion</h3><p>Keyboard focus, readable contrast, live status, and reduced-motion states are built in.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <span>TRISTAN WILLIAMS · XOTRII</span>
+    <span>ATLANTA · <span id="year"></span></span>
+  </footer>
+  <script type="module" src="./src/hub.js"></script>
 </body>
 </html>
